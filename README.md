@@ -1,10 +1,11 @@
-# DHGE - Praktische Informatik - Matrikel 19 - Semester 5
+# DHGE - Praktische Informatik - Matrikel 20 - Semester 5
 
 Dieses Repository ist ein Projekt von Studierenden des Studiengangs "Praktische Informatik" der Dualen Hochschule Gera-Eisenach.
 Hier werden alle Mitschriften der einzelnen Modulen gesammelt.
 Die Skripte liegen im `markdown`-Format vor.
 Zur besseren Handhabung (und weil Github nur begrenzte `markdown`-Features bereitstellt)
-werden diese zusätzlich automatisch in [PDFs](https://github.com/importPI19fromDHGE/dhge-pi19-sem5/releases) umgewandelt und zur Verfügung gestellt.
+werden diese zusätzlich automatisch in [PDFs](https://github.com/importPI20fromDHGE/dhge-pi20-sem5/releases) umgewandelt und zur Verfügung gestellt.
+Dieses Repo ist ein Fork von PI19 und soll hier weiter entwickelt werden.
 
 ## Contributing (andere Jahrgänge)
 
@@ -27,11 +28,11 @@ Du kannst folgendermaßen vorgehen:
 
 Und dann kann es losgehen!
 
-## Contributing (PI 19)
+## Contributing (PI 20)
 
-Alle Kommilitonen PI19 sind dazu eingeladen, ihre eigenen Beiträge zu diesem Projekt zu leisten und ihre Ideen einzubringen. Wenn du einen Beitrag leisten willst, kannst du wie folgt vorgehen:
+Alle Kommilitonen PI20 sind dazu eingeladen, ihre eigenen Beiträge zu diesem Projekt zu leisten und ihre Ideen einzubringen. Wenn du einen Beitrag leisten willst, kannst du wie folgt vorgehen:
 
-1. Wenn du hier neu bist, erstelle auf jeden Fall ersteinmal [ein Issue](https://github.com/importPI19fromDHGE/dhge-pi19-sem5/issues/new). Dann können wir uns gerne über deine Idee austauschen.
+1. Wenn du hier neu bist, erstelle auf jeden Fall ersteinmal [ein Issue](https://github.com/importPI20fromDHGE/dhge-pi20-sem5/issues/new). Dann können wir uns gerne über deine Idee austauschen.
 2. `git clone` diese Repo und erstelle mit `git checkout -b <branchname>` eine neue Branch
 3. Implementiere deine Idee. Bei Fragen kannst du dich gerne über das Issue an uns wenden.
 4. Erstelle eine Pull Request, markiere dabei via @mention die Personen aus dem Issue und warte auf Feedback.
