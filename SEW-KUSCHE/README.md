@@ -239,40 +239,54 @@ Software-Entwicklungswerkzeuge
 Beispieldatei für Übung 2:
 
 ```make
-all: main html/index.html latex/refman.pdf
+G++ = g++
+RM = rm
+MAKE = make
+DOXYGEN = doxygen
 
-hfiles=circ.h color.h graobj.h rect.h
+# compiler flags:
+#  -g    adds debugging information to the executable file
+#  -Wall turns on most, but not all, compiler warnings
+CFLAGS  = -g -Wall
+
+# the build target executable:
+TARGET = Main
+
+# dependencies
+HFILES = circ.h color.h graobj.h rect.h
+
+all: $(TARGET) html/index.html latex/refman.pdf
 
 main.o: main.cpp $(hfiles)
-  @g++ -c main.cpp
+	$(G++) -c main.cpp
 
 rect.o: rect.cpp $(hfiles)
-  @g++ -c rect.cpp
+	$(G++) -c rect.cpp
 
 circ.o: circ.cpp $(hfiles)
-  @g++ -c circ.cpp
+	$(G++) -c circ.cpp
 
 graobj.o: graobj.cpp $(hfiles)
-  @g++ -c graobj.cpp
+	$(G++) -c graobj.cpp
 
 sdlinterf.o: sdlinterf.c $(hfiles)
-  @gcc `sdl2-config --cflags` -c sdlinterf.c
+	$(G++) `sdl2-config --cflags` -c sdlinterf.c
 
-main: circ.o graobj.o main.o rect.o sdlinterf.o
-  @echo Compiling $@
-  @g++ -o main circ.o graobj.o main.o rect.o sdlinterf.o `sdl2-config --libs`
+$(TARGET): circ.o graobj.o main.o rect.o sdlinterf.o
+	$(G++) -o $(TARGET) circ.o graobj.o main.o rect.o sdlinterf.o `sdl2-config --libs`
 
 Doxyfile:
-  @doxygen -g
+	$(DOXYGEN) -g
 
 html/index.html: Doxyfile
-  @doxygen &> /dev/null
+	$(DOXYGEN)
 
 latex/refman.pdf: Doxyfile html/index.html
-  @$(MAKE) -C latex &> /dev/null
+	$(MAKE) -C latex
 
 clean:
-  @rm -rf main *.o html latex
+	$(RM) -rf main *.o html latex
+
 ```
 
 ## Autotools
