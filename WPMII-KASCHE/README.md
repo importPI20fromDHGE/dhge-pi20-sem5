@@ -1,7 +1,7 @@
 # WPMII - Cloud Computing
 
-Ziel der Lehrveranstaltung ist es die Amazon AWS Fähigkeiten aus dem letzten Semesters zu vertiefen.  
-Dazu soll zum einen der aufbauenede Lehrgang "AWS Academy Cloud Developing" bei Vocarium abgeschlossen werden (Kann Note um 0,5 Punke verbessern) zum anderen soll eine Aufgabe automatisiert in der Cloud ausgeführt werden.
+Ziel der Lehrveranstaltung ist es, die Amazon AWS Fähigkeiten aus dem letzten Semester zu vertiefen.  
+Dazu soll zum einen der aufbauende Lehrgang "AWS Academy Cloud Developing" in der "AWS Academy" abgeschlossen werden (kann Note um 0,5 Punke verbessern), zum anderen soll eine Aufgabe automatisiert in der Cloud ausgeführt werden.
 
 - [WPMII - Cloud Computing](#wpmii---cloud-computing)
   - [AWS Skript](#aws-skript)
@@ -25,17 +25,17 @@ Ich möchte diesen eignen Service in unregelmäßigen Abständen ohne Zutun eine
 
 - Amazon CLI mit PowerShell-Skript unter Windows steuern
 - Notwendige Daten am Anfang ermitteln und prüfen
-- SIcherstellen, dass SSH-Schlüssel zum Verbinden vorhanden ist
+- Sicherstellen, dass SSH-Schlüssel zum Verbinden vorhanden ist
 - AWS Netzwerk konfigurieren
+  - Öffentliches Subnet ermitteln
   - Sicherheitsgruppe
   - Firewall Regeln
-  - Öffentliches Subnet ermitteln
 - EC2 Instanz starten
   - Deren IP ermitteln
 - Aufgabe per SSH auf den Server hochladen
 - Aufgabe per SSH auf dem Server starten
 - Ergebnis per SSH herunterladen und Sitzung schließen
-- EC2 Instanz wieder stoppen (damit keineweiteren Kosten entstehen)
+- EC2 Instanz wieder stoppen (damit keine weiteren Kosten entstehen)
 - Regeln aus Security Group und anschließend diese selbst löschen
 
 ### AWS-CLI Befehle
@@ -64,7 +64,7 @@ if ($subnetid -eq "") {
 }
 ```
 
-Fragt die verfügbaren SUbnets des Accounts ab und nutzt das erste. Instanz wird diesem zugewiesen.
+Fragt die verfügbaren Subnets des Accounts ab und nutzt das Erste. Instanz wird diesem zugewiesen.
 
 `$secgroup = aws ec2 create-security-group --group-name "securitygroup-$awsuser" --description "security group of $awsuser"`  
 Erstellt eine neue Security Group
@@ -73,7 +73,7 @@ Erstellt eine neue Security Group
 Weist der Security Group die Regel zu, dass jede IPv4 über den Port 22 auf die Instanz zugreifen darf.
 
 `$instance = aws ec2 run-instances --image-id $awsami --count 1 --instance-type $awsinstancetype --key-name $awsuser --security-group-ids ($secgroup | ConvertFrom-Json).GroupId --subnet-id $subnetid`  
-Startet eine neue EC2-Instanz. Als Image ist "Amazon Linux 2" zu empfehle - ACHTUNG: AMI-IDs sind Regionsspezifisch.
+Startet eine neue EC2-Instanz. Als Image ist "Amazon Linux 2" zu empfehlen - ACHTUNG: AMI-IDs sind regionsspezifisch.
 
 `aws ec2 create-tags --resources ($instance | ConvertFrom-Json).Instances[0].InstanceId  --tags Key=DHGE,Value=$awsuser`  
 Der Dozent wollte die Instanzen getaggt haben. Sonst keine funktionale Auswirkung.
@@ -112,7 +112,7 @@ Start-Sleep -Seconds 60
 aws ec2 delete-security-group --group-id ($secgroup | ConvertFrom-Json).GroupId
 ```
 
-Instanz terminieren (quasi löschen, wird nach einiger Zeit automatisch aus Webkonsole gelöscht).  Anschließend Regeln von Security Group löschen. Dann warten, bis EC2-Instanz heruntergfahren (auf gut glück 60 Sekunden warten), und diese löschen.
+Instanz terminieren (quasi löschen, wird nach einiger Zeit automatisch aus Webkonsole gelöscht).  Anschließend Regeln von Security Group löschen. Dann warten, bis EC2-Instanz heruntergfahren (auf gut Glück 60 Sekunden warten), und diese löschen.
 
 ## AWS Academy Lehrgang
 
@@ -256,3 +256,6 @@ Folgender AWS Kurs soll bearbeitet werden. Dies kann die Note um bis zu 0,5 Punk
     10. 2
 
 ### Labore
+
+Einfach der Beschreibung in der Academy folgen und am Ende auf Submit klicken.  
+**Achtung**: Nicht aus Versehen bei Benennungen was verdrehen, sonst darf man alles noch mal machen.
